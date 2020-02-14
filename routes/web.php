@@ -24,3 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('kelas','KelasController');
 Route::resource('siswa','SiswaController');
 Route::resource('mapel','MapelController');
+Route::get('relasi-5', function() {
+
+
+});

@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
-    protected $fillable = ['nis'];
-    public $timestamps = true;
+	public function kelas() {
+		return $this->belongsTo('App\Kelas','id_kelas');
+	}
+
+	public function mapel() {
+        return $this->belongsToMany(
+            'App\Siswa',
+            'mapel_siswa',
+            'id_siswa',
+            'id_mapel'
+        );
+}
 }
