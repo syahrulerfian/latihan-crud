@@ -56,7 +56,8 @@ class SiswaController extends Controller
         $kelas = Kelas::all();
         $siswa = Siswa::findOrFail($id);
         $mapel = Mapel::all();
-        return view('siswa.edit', compact('siswa','kelas','mapel'));
+        $selected = $siswa->mapel->pluck('id')->toArray();
+        return view('siswa.edit', compact('siswa','kelas','mapel','selected'));
     }
 
     public function update(Request $request,$id)
@@ -73,7 +74,9 @@ class SiswaController extends Controller
 
     public function destroy($id)
     {
-        $siswa = Siswa::findOrFail($id)->delete();
+        $siswa = Siswa::findOrFail($id);
+        $siswa->mapel()->detach();
+        $siswa->delete();
         return redirect()->route('siswa.index');
 
     }

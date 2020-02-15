@@ -40,9 +40,9 @@
                             <td>{{$data->nis}}</td>
                             <td>{{$data->nama}}</td>
                             <td>{{$data->alamat}}</td>
-                            <td>{{$data->kelas}}</td>
+                            <td>{{$data->kelas->kelas}}</td>
                             <td>
-                            @foreach($data->mapel as $value)
+                            @foreach ($data->mapel as $value)
                             <li>{{$value->nama}}</li>
                             @endforeach
                             </td>                            

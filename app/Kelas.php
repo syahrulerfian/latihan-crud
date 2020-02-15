@@ -13,4 +13,12 @@ class Kelas extends Model
 public function siswa(){
     return $this->hasMany('App\Siswa','id_kelas');
     }
+    public function mapel() {
+        return $this->belongsToMany(
+            'App\Mapel',
+            'mapel_siswa',
+            'id_siswa',
+            'id_mapel'
+        );
+    }
 }
